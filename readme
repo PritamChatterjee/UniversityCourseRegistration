@@ -1,0 +1,129 @@
+A university has introduced a new course registration system where students can enroll in courses.
+Each course has a difficulty level (points required) and belongs to a specific department (category).
+Students have a certain academic standing (point level) and are pre-approved for certain departments based on their major/minor.
+A student can successfully register for a course only if:
+
+They are pre-approved for that department (the department is in their approved list).
+Their point level is greater than or equal to the course's required points.
+
+Students may attempt to register for the same course multiple times (or different students may try), but once registered, the spot is taken (marked as completed).
+Input
+text4
+Alice Johnson,7,ComputerScience Mathematics
+Bob Lee,4,Physics ComputerScience
+Clara Mendes,9,Biology Chemistry
+David Kim,6,Mathematics Physics Chemistry
+5
+101,Data_Structures,ComputerScience,5
+102,Quantum_Mechanics,Physics,8
+103,Organic_Chemistry,Chemistry,6
+104,Linear_Algebra,Mathematics,4
+105,Molecular_Biology,Biology,7
+8
+Alice Johnson,101
+Bob Lee,102
+Clara Mendes,105
+David Kim,104
+Alice Johnson,102
+Bob Lee,101
+David Kim,103
+Clara Mendes,103
+What actually happens (step-by-step)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+QueryCourse IDDepartmentPoints ReqStudent (level / approved depts)Can register?Result after attemptAlice → 101101ComputerScience5Alice 7 ≥ 5, has CSYesRegistered by AliceBob → 102102Physics8Bob 4 < 8 → too lowNoStill openClara → 105105Biology7Clara 9 ≥ 7, has BiologyYesRegistered by ClaraDavid → 104104Mathematics4David 6 ≥ 4, has MathYesRegistered by DavidAlice → 102102Physics8Alice 7 < 8 → too lowNoStill openBob → 101101ComputerScience5Already registered → ignored–Remains registeredDavid → 103103Chemistry6David 6 ≥ 6, has ChemistryYesRegistered by DavidClara → 103103Chemistry6Already registered → ignored–Remains registered
+Final status:
+Successfully registered courses: 101, 103, 104, 105 (4 courses)
+Unregistered course: 102 (Quantum Mechanics) remains open.
+Total points from registered courses: 5 + 6 + 4 + 7 = 22
+Expected Output (adapted to same format as HelpDesk)
+textWaitingTicketCount:1
+CompletedTicketsTotalPoint:22
+TicketsTotalPointByCategory:
+ComputerScience:5
+Physics:8
+Chemistry:6
+Mathematics:4
+Biology:7
+TicketsTotalPointByEmployee:
+Alice Johnson:5
+Bob Lee:0
+Clara Mendes:7
+David Kim:10
+(Note: Categories not present are assumed 0 if needed, but here all used departments appear.
+Order of employees in output matches input order.
+Order of categories can follow a fixed list if required: e.g., Biology, Chemistry, ComputerScience, Mathematics, Physics.)
+This case study uses exactly the same underlying logic as the HelpDesk system (category check + point level check, one-time completion, multiple attempts allowed), but in a completely different domain: university course registration instead of IT support tickets. You can reuse the same Java code with minimal renaming (e.g., Employee → Student, Ticket → Course, HelpDesk → Registrar) to process this case.
